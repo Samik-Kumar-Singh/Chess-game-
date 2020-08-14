@@ -18,7 +18,12 @@ public class Pawn extends Piece {
 	
 
 	public Pawn(final Alliance pieceAlliance,final int piecePosition) {
-		super(PieceType.PAWN,piecePosition, pieceAlliance);
+		super(PieceType.PAWN,piecePosition, pieceAlliance,true);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Pawn(final Alliance pieceAlliance,final int piecePosition,final boolean isFirstMove) {
+		super(PieceType.PAWN,piecePosition, pieceAlliance,isFirstMove);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,8 +42,8 @@ public class Pawn extends Piece {
 				//to-do more work
 				legalMoves.add(new MajorMove(board,this,candidateDestinationCoordinate));
 			} else if(currentCandidateOffset == 16 && this.isFirstMove() && 
-			    (BoardUtils.SEVENTH_RANK[this.piecePosition] && this.getPieceAlliance().isBlack()) || 
-			    (BoardUtils.SECOND_RANK[this.piecePosition] && this.getPieceAlliance().isWhite())) {
+			    ((BoardUtils.SEVENTH_RANK[this.piecePosition] && this.getPieceAlliance().isBlack()) || 
+			    (BoardUtils.SECOND_RANK[this.piecePosition] && this.getPieceAlliance().isWhite()))) {
 				final int behindCandidateDestinationCoordinate= this.piecePosition + (this.pieceAlliance.getDirection() * 8);
 				if(!board.getTile(behindCandidateDestinationCoordinate).isTileOccupied() &&
 					!board.getTile(candidateDestinationCoordinate).isTileOccupied()) {

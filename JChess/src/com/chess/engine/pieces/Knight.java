@@ -17,7 +17,11 @@ public class Knight extends Piece {
 	private static int[] CANDIDATE_MOVE_COORDINATES= {-17,-15,-10,-6,6,10,15,17};
 	
 	public Knight(final Alliance pieceAlliance,final int piecePosition) {
-		super(PieceType.KNIGHT,piecePosition, pieceAlliance);
+		super(PieceType.KNIGHT,piecePosition, pieceAlliance,true);
+		// TODO Auto-generated constructor stub
+	}
+	public Knight(final Alliance pieceAlliance,final int piecePosition,final boolean isFirstMove) {
+		super(PieceType.KNIGHT,piecePosition, pieceAlliance,isFirstMove);
 		// TODO Auto-generated constructor stub
 	}
 

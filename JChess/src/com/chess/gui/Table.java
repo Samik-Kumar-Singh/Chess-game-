@@ -38,6 +38,8 @@ public class Table {
 	private Piece humanMovedPiece;
 	private BoardDirection boardDirection;
 	
+	private boolean highlightLegalMoves;
+	
 	private final Color lightTileColor = Color.decode("#FFFACD");
 	private final Color darkTileColor = Color.decode("#593E1A");
 	
@@ -54,6 +56,7 @@ public class Table {
 		this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
 		this.chessBoard = Board.createStandardBoard();
 		this.boardPanel=new BoardPanel();
+		this.highlightLegalMoves=false;
 		this.boardDirection=BoardDirection.NORMAL;
 		this.gameFrame.add(this.boardPanel,BorderLayout.CENTER);
 		this.gameFrame.setVisible(true);
@@ -96,6 +99,19 @@ public class Table {
 			}
 		});
 		preferencesMenu.add(flipBoardMenuItem);
+		preferencesMenu.addSeparator();
+		
+		final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight legal moves",false);
+		/*legalMoveHighlighterCheckbox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				highlightLegalMoves = legalMoveHighlighterCheckbox.isSelected();
+			}
+		});*/
+		 legalMoveHighlighterCheckbox.addActionListener(e -> highlightLegalMoves = legalMoveHighlighterCheckbox.isSelected());
+		
+		preferencesMenu.add(legalMoveHighlighterCheckbox);
+		
 		return preferencesMenu;
 	}
 	
@@ -256,12 +272,12 @@ public class Table {
 		}
 		
 	private void highlightLegals(final Board board) {
-		if(true) {
+		if(highlightLegalMoves) {
 			for(final Move move:pieceLegalMoves(board)) {
-				if(move.getDestinationCoordinate() == tileId) {
+				if(move.getDestinationCoordinate() == this.tileId) {
 					try {
 						add(new JLabel(new ImageIcon(ImageIO.read(new File("misc/green_dot.png")))));
-					}catch(Exception e) {
+					}catch(final IOException e) {
 						e.printStackTrace();
 					}
 				}
