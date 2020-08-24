@@ -61,7 +61,7 @@ public class Table extends Observable{
 	private final static Dimension TILE_PANEL_DIMENSION = new Dimension(10,10);
 	private static String defaultPieceImagesPath = "holywarriors/";
 	
-	public Table() {
+	private Table() {
 		this.gameFrame = new JFrame("JChess");
 		this.gameFrame.setLayout(new BorderLayout());
 		final JMenuBar tableMenuBar = createTableMenuBar();
