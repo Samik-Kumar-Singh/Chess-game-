@@ -68,7 +68,7 @@ public class Bishop extends Piece {
 		return BoardUtils.FIRST_COLOUMN[currentPosition] && (candidateOffset == -9 || candidateOffset == 7);
 	}
 	private static boolean isEightColumnExclusion(final int currentPosition,final int candidateOffset) {
-		return BoardUtils.EIGHTH_COLOUMN[currentPosition] && (candidateOffset == -9 || candidateOffset == 7);
+		return BoardUtils.EIGHTH_COLOUMN[currentPosition] && (candidateOffset == -7 || candidateOffset == 9);
 	}
 
 	@Override
